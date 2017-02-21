@@ -23,7 +23,7 @@ namespace :s3artifact do
       tmp = capture 'mktemp'
 
       # download artifact
-      execute("aws s3 cp #{pkg} #{tmp}")
+      execute("aws s3 --quiet cp #{pkg} #{tmp}")
 
       # expand tarball
       execute :mkdir, '-p', release_path
