@@ -1,37 +1,47 @@
-# capistrano-scm-tar
+# capistrano-scm-s3artifact
 
-A tar strategy for Capistrano 3 to deploy tarball.
+A s3artifact strategy for Capistrano 3 to deploy tarball from s3.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-scm-tar'
+gem 'capistrano-scm-s3artifact', :git => 'https://github.com/arwineap/capistrano-scm-s3artifact'
 ```
 
 ## Usage
 
-Set `tar` as `scm` option in your `config/deploy.rb`:
+Set `s3artifact` as `scm` option in your `config/deploy.rb`:
 
 ```ruby
-set :scm, :tar
+set :scm, :s3artifact
 ```
 
-Build a release package of your project and upload it to the server you run capistrano:
+Build a release package of your project and upload it to the s3 bucket you run store artifacts in:
 
 ```shell
 tar czf /tmp/v1.0.0.tar.gz *
-scp /tmp/v1.0.0.tar.gz example.com:/tmp/v1.0.0.tar.gz
+aws s3 cp /tmp/v1.0.0.tar.gz s3://s3-bucket-name/v1.0.0.tar.gz
 ```
 
 And then, deploy it:
 
 ```shell
-cap deploy package=/tmp/v1.0.0.tar.gz
+cap deploy package=s3://s3-bucket-name/v1.0.0.tar.gz
 ```
 
-The basename of tarball is used for the revision number of capistrano setting by `set_current_revision`.
+The aws credentials are provided by a iam profile role
+
+The revision setting set by `set_current_revision` in capistrano is either set with by the contents of a file specified by ENV['version_file'] or by the basename of the tarball
+
+
+## Attributions
+This was essentially a fork of:
+https://github.com/ziguzagu/capistrano-scm-tar
+
+And modified to replace this capistrano2 strategy:
+https://github.com/cluesque/capistrano-s3
 
 ## License
 

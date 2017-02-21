@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'capistrano/scm/tar/version'
+require 'capistrano/scm/s3artifact/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "capistrano-scm-tar"
-  spec.version       = Capistrano::Scm::Tar::VERSION
-  spec.authors       = ["ziguzagu"]
-  spec.email         = ["ziguzagu@gmail.com"]
-  spec.summary       = %q{A tar strategy for Capistrano 3 to deploy tarball.}
-  spec.description   = %q{A tar strategy for Capistrano 3 to deploy tarball.}
-  spec.homepage      = "https://github.com/ziguzagu/capistrano-scm-tar"
+  spec.name          = "capistrano-scm-s3artifact"
+  spec.version       = Capistrano::Scm::S3artifact::VERSION
+  spec.authors       = ["arwineap"]
+  spec.email         = ["arwineap@gmail.com"]
+  spec.summary       = %q{A s3artifact strategy for Capistrano 3 to deploy tarball.}
+  spec.description   = %q{A s3artifact strategy for Capistrano 3 to deploy tarball.}
+  spec.homepage      = "https://github.com/arwineap/capistrano-scm-s3artifact"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

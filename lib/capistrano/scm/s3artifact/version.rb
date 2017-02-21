@@ -1,6 +1,6 @@
 module Capistrano
   module Scm
-    module Tar
+    module S3artifact
       VERSION = "0.0.1"
     end
   end
