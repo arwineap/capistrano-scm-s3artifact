@@ -1,5 +1,5 @@
 # -*- mode: ruby -*-
-namespace :tar do
+namespace :s3artifact do
 
   task :create_release do
     if ! ENV['package']
@@ -35,11 +35,7 @@ namespace :tar do
     end
   end
 
-  task :check do
-      foo = 'check'
-  end
-  task :set_current_revision do
-      foo = 'set_current_revision'
-  end
+  task :check
+  task :set_current_revision
 
 end
