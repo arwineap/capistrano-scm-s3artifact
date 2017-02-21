@@ -35,7 +35,11 @@ namespace :tar do
     end
   end
 
-  task :check
-  task :set_current_revision
+  task :check do
+      foo = 'check'
+  end
+  task :set_current_revision do
+      foo = 'set_current_revision'
+  end
 
 end
