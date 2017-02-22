@@ -31,9 +31,14 @@ And then, deploy it:
 cap deploy package=s3://s3-bucket-name/v1.0.0.tar.gz
 ```
 
+If your s3 object is versioned you can specify the version to grab by setting an environment variable with the path to a file specifying the version
+`artifact_version_file=/path/to/artifact/version/file`
+
+
 The aws credentials are provided by a iam profile role
 
-The revision setting set by `set_current_revision` in capistrano is either set with by the contents of a file specified by ENV['version_file'] or by the basename of the tarball
+The revision setting used by `set_current_revision` is set by the basename of the tarball. Optionally it may also be set via a file by setting an environment file `version_file=/path/to/version/file`
+
 
 
 ## Attributions
